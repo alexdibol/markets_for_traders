@@ -4,14 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>Markets for Traders — Market Mechanics & Execution</title>
-  <meta name="description" content="Markets for Traders is a mechanism-first sequence on market structure, execution, liquidity, regimes, and survivable trading architectures. Two books and ten Colab laboratories. Not about alpha. About operating in reality." />
+  <title>Markets for Traders — Market Mechanics & Execution Pillar</title>
+  <meta name="description" content="Markets for Traders: a governance-first, mechanism-driven training pillar for professional algorithmic trading. Two books and ten Colab notebooks focused on execution, liquidity, regimes, and systemic stress." />
 
   <style>
     :root{
       --bg:#07080d;
       --panel:#0f1220;
-      --panel-2:#141836;
       --text:#eef0ff;
       --muted:#b8bddb;
       --border:rgba(255,255,255,0.09);
@@ -23,114 +22,59 @@
     *{box-sizing:border-box;}
     body{
       margin:0;
-      background:
-        radial-gradient(900px 600px at 15% 10%, rgba(122,162,255,0.18), transparent 55%),
-        radial-gradient(800px 600px at 85% 20%, rgba(110,231,200,0.12), transparent 55%),
-        radial-gradient(900px 650px at 60% 95%, rgba(255,210,122,0.07), transparent 55%),
-        var(--bg);
+      background:var(--bg);
       color:var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      line-height:1.65;
+      line-height:1.7;
     }
     a{color:var(--accent);text-decoration:none;}
     a:hover{color:var(--accent2);text-decoration:underline;}
-    .container{max-width:1140px;margin:0 auto;padding:32px 20px 96px;}
-
-    .topbar{
-      display:flex;align-items:center;justify-content:space-between;
-      margin-bottom:22px;
-    }
-    .brand{display:flex;gap:12px;align-items:center;}
-    .logo{
-      width:36px;height:36px;border-radius:12px;
-      background:linear-gradient(135deg, rgba(122,162,255,0.85), rgba(110,231,200,0.75));
-      border:1px solid rgba(255,255,255,0.14);
-      box-shadow:0 10px 24px rgba(0,0,0,0.35);
-    }
-    .brand .title{
-      font-size:12px;letter-spacing:0.14em;
-      text-transform:uppercase;font-weight:900;color:var(--muted);
-    }
-    .brand .sub{font-size:12px;color:var(--muted);}
-
+    .container{max-width:1140px;margin:0 auto;padding:40px 20px 80px;}
     .hero{
-      padding:46px 40px;
-      border-radius:24px;
-      background:linear-gradient(180deg, rgba(20,24,54,0.94), rgba(15,18,32,0.90));
+      padding:40px;
+      border-radius:22px;
+      background:linear-gradient(180deg, #141836, #0f1220);
       border:1px solid var(--border);
       box-shadow:var(--shadow);
     }
-    .kicker{
-      text-transform:uppercase;
-      letter-spacing:0.18em;
-      font-size:12px;
-      color:var(--muted);
-    }
-    .hero h1{
-      font-size:40px;
-      margin:14px 0 14px;
-      text-transform:uppercase;
-      letter-spacing:0.02em;
-    }
-    .subtitle{
-      max-width:105ch;
-      color:var(--muted);
-      font-size:17px;
-    }
-
-    .section{margin-top:64px;}
-    .section h2{font-size:30px;margin-bottom:16px;}
-    .section p{max-width:110ch;color:var(--muted);margin:14px 0;}
-
+    h1{font-size:38px;margin:0 0 12px;text-transform:uppercase;}
+    h2{font-size:28px;margin-top:60px;}
+    h3{font-size:18px;margin:0 0 8px;}
+    p{color:var(--muted);max-width:100ch;}
     .grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:22px;
-      margin-top:26px;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+      margin-top:24px;
     }
     .card{
-      padding:24px;
-      border-radius:20px;
-      background:rgba(20,24,54,0.72);
+      padding:20px;
+      border-radius:18px;
+      background:#141836;
       border:1px solid var(--border);
-      box-shadow:0 10px 30px rgba(0,0,0,0.30);
     }
-    .linkcard{
-      display:block;color:inherit;text-decoration:none;
-      transition:transform .14s ease,border-color .14s ease;
-    }
-    .linkcard:hover{
-      transform:translateY(-2px);
-      border-color:rgba(122,162,255,0.35);
-    }
-
-    .callout{
-      margin-top:22px;
-      padding:22px;
-      border-radius:20px;
-      border:1px solid rgba(122,162,255,0.18);
-      background:linear-gradient(135deg, rgba(122,162,255,0.06), rgba(110,231,200,0.04));
-      color:var(--muted);
-      max-width:110ch;
-    }
-
     .reviewbox{
-      margin-top:22px;
+      margin-top:24px;
       padding:24px;
-      border-radius:20px;
-      border:1px solid rgba(255,210,122,0.28);
+      border-radius:18px;
+      border:1px solid rgba(255,210,122,0.25);
       background:linear-gradient(135deg, rgba(255,210,122,0.06), rgba(122,162,255,0.05));
-      max-width:110ch;
     }
-    .stars{color:var(--warn);font-weight:900;letter-spacing:0.10em;}
-
-    .footer{
-      margin-top:96px;
-      padding-top:28px;
-      border-top:1px solid var(--border);
+    .stars{color:var(--warn);font-size:18px;font-weight:900;}
+    .callout{
+      margin-top:24px;
+      padding:20px;
+      border-radius:18px;
+      background:rgba(122,162,255,0.06);
+      border:1px solid rgba(122,162,255,0.18);
       color:var(--muted);
-      text-align:center;
+    }
+    footer{
+      margin-top:80px;
+      padding-top:30px;
+      border-top:1px solid var(--border);
       font-size:13px;
+      color:var(--muted);
     }
   </style>
 </head>
@@ -138,181 +82,205 @@
 <body>
 <main class="container">
 
-<header class="topbar">
-  <div class="brand">
-    <div class="logo"></div>
-    <div>
-      <div class="title">Governance-First Trading</div>
-      <div class="sub">Market Mechanics & Execution Pillar</div>
+  <!-- HERO / INTRODUCTION -->
+  <section class="hero">
+    <h1>Markets for Traders</h1>
+
+    <p>
+      <strong>Markets for Traders</strong> is the Market Mechanics & Execution pillar of a broader,
+      governance-first curriculum for training professional algorithmic trading practitioners.
+      This pillar is intentionally explicit about what it is <em>not</em>. It is not a promise of alpha.
+      It is not a catalog of signals. It is not a shortcut to performance.
+    </p>
+
+    <p>
+      Instead, this collection is designed to address the structural gap that separates most
+      academic or retail trading education from institutional reality. In professional settings,
+      trading strategies do not fail primarily because their ideas are wrong. They fail because
+      liquidity disappears, execution costs dominate, correlations collapse, funding constraints bind,
+      and regimes change faster than portfolios can adapt. These failures are mechanical, not intellectual.
+    </p>
+
+    <p>
+      The two books in this sequence, together with ten tightly controlled Colab notebooks,
+      train the reader to see markets as systems governed by constraints. Each chapter isolates
+      a market domain and exposes the mechanisms that determine realized outcomes under stress.
+      The notebooks are not optimizers. They are laboratories. Their purpose is to make failure
+      visible, interpretable, and repeatable.
+    </p>
+
+    <p>
+      This pillar assumes that governance and strategy engineering already exist elsewhere
+      in the curriculum. Its role is narrower and deeper: to ensure that whatever strategies
+      are eventually designed remain grounded in how markets actually function when conditions
+      stop being benign.
+    </p>
+  </section>
+
+  <!-- CHAPTERS -->
+  <section>
+    <h2>The Ten Execution Chapters</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Chapter 1 — Cryptos</h3>
+        <p>
+          Crypto markets are treated as a pure regime laboratory. With minimal fundamental anchors
+          and extreme reflexivity, they expose liquidity cliffs, feedback loops, and narrative-driven
+          regime shifts. This chapter trains intuition around discontinuity, not valuation.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Chapter 2 — Oil and Commodities Trading</h3>
+        <p>
+          Commodities introduce physical constraints into financial pricing. Storage, transport,
+          seasonality, and geopolitical shocks dominate return dynamics. This chapter forces the
+          reader to reconcile financial models with real-world supply mechanisms.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Chapter 3 — FX Carry Trade</h3>
+        <p>
+          FX carry is framed as compensation for crash risk rather than free yield. The chapter
+          examines funding currencies, unwind dynamics, and the structural fragility of
+          low-volatility regimes.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Chapter 4 — Yield Curve Dynamics</h3>
+        <p>
+          The yield curve is treated as a tradable surface rather than a forecasting tool.
+          Duration, convexity, curve shape, and monetary regime transitions define feasible
+          exposure, not directional views.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Chapter 5 — Credit Spreads</h3>
+        <p>
+          Credit spreads encode delayed volatility and jump risk. This chapter focuses on
+          hazard rates, liquidity premia, and the non-linear behavior of spreads under stress.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Chapter 6 — Volatility Trading</h3>
+        <p>
+          Volatility is treated as an asset class with its own carry and convexity trade-offs.
+          The chapter emphasizes volatility-of-volatility, surface dynamics, and regime breaks.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Chapter 7 — Equity Factors</h3>
+        <p>
+          Equity factors are analyzed as compressed macro exposures. Crowding, correlation spikes,
+          and factor crashes reveal how diversification erodes precisely when it is most needed.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Chapter 8 — Order Flow Mechanism</h3>
+        <p>
+          This chapter brings microstructure to the foreground. Depth, impact, inventory, and
+          execution timing define the true cost of changing portfolio state.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Chapter 9 — Cross-Asset Macro Coupling</h3>
+        <p>
+          Cross-asset interactions are examined through funding, correlation, and regime coupling.
+          The chapter demonstrates how diversification collapses into shared stress channels.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Chapter 10 — Cascading Stress</h3>
+        <p>
+          The final chapter models systemic cascades. Balance-sheet contagion, forced liquidation,
+          and feedback loops dominate price formation. Markets become liquidation mechanisms.
+        </p>
+      </div>
+
     </div>
-  </div>
-</header>
+  </section>
 
-<section class="hero">
-  <div class="kicker">Not Alpha · Not Forecasting · Market Reality</div>
-  <h1>Markets for Traders</h1>
+  <!-- EVALUATION -->
+  <section>
+    <h2>Independent Assessment</h2>
 
-  <p class="subtitle">
-    Most people encounter markets through prices. Traders encounter them through constraints.
-    What can be traded, in what size, under what funding, through which channels, and at what
-    cost — these questions determine outcomes long before any notion of “edge” becomes relevant.
-    <br/><br/>
-    <strong>Markets for Traders</strong> is built around a simple but often neglected premise:
-    markets are not prediction problems. They are operational systems. Prices are the visible
-    surface of a deeper machinery composed of liquidity provision, balance-sheet constraints,
-    execution frictions, regulatory limits, and regime-dependent behavior.
-    <br/><br/>
-    This pillar exists to retrain intuition. It teaches readers to stop asking
-    “Is this signal good?” and start asking “Can this position survive?”
-    Survival, not optimality, is the dominant objective once markets are treated honestly.
-    <br/><br/>
-    The collection is deliberately explicit about its limits. It does not promise alpha.
-    It does not offer deployable strategies. Instead, it builds the intellectual and operational
-    scaffolding required before any professional trading activity can be responsibly attempted.
-  </p>
-</section>
+    <div class="reviewbox">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
 
-<section class="section">
-  <h2>The Two-Book Architecture</h2>
-
-  <p>
-    The sequence is structured as apprenticeship rather than instruction.
-    The first book establishes the grammar of market mechanics.
-    The second forces the reader to operate within that grammar under stress.
-    Neither stands alone.
-  </p>
-
-  <div class="grid">
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/book/ABC_OF_TRADING.pdf" target="_blank">
-      <h3>Book I — The ABC of Trading</h3>
       <p>
-        A conceptual foundation written for practitioners.
-        Liquidity, carry, volatility, correlation, credit, and funding are introduced
-        not as indicators but as economic mechanisms. The goal is literacy:
-        understanding what market objects mean, how they interact, and why naive
-        backtests so often mislead.
+        This two-book sequence represents an unusually disciplined and honest contribution to
+        algorithmic trading education. Its defining strength is not novelty but restraint.
+        The collection makes no claims about alpha generation and explicitly rejects the idea
+        that better signals alone produce better outcomes.
       </p>
-    </a>
 
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/book/BOOK%20MARKETS%20FOR%20TRADERS.pdf" target="_blank">
-      <h3>Book II — Markets for Traders</h3>
       <p>
-        Ten mechanism-first laboratories implemented in Google Colab.
-        Strategies operate on explicit curves, surfaces, and balance-sheet objects.
-        Costs accumulate. Constraints bind. Regimes change.
-        Failure is frequent — and instructive.
+        Instead, the books and notebooks train readers to recognize the structural forces that
+        dominate realized performance: execution costs, liquidity collapse, regime shifts,
+        correlation compression, and funding constraints. The repeated acknowledgment of the
+        gap between models and real markets is not a disclaimer but a pedagogical anchor.
       </p>
-    </a>
-  </div>
 
-  <div class="callout">
-    <strong>Important:</strong> These books are intentionally repetitive.
-    Core ideas reappear across assets and mechanisms because real trading failure
-    is rarely novel — it is structural.
-  </div>
-</section>
+      <p>
+        The execution laboratories are particularly effective because they force strategies
+        to fail in controlled ways. This creates intuition that cannot be acquired through
+        historical backtests alone. For institutional practitioners, this posture is essential.
+        Survival, not optimization, is treated as the primary objective.
+      </p>
 
-<section class="section">
-  <h2>The Execution Laboratories</h2>
+      <p>
+        <strong>Evaluator disclosure:</strong> This assessment was generated by OpenAI GPT-5.2
+        as an independent, non-authoritative opinion. Large language models may produce
+        persuasive narratives without factual verification. This evaluation should be treated
+        as commentary, not certification or endorsement.
+      </p>
+    </div>
+  </section>
 
-  <p>
-    The notebooks are not demonstrations and not templates.
-    They are controlled environments designed to expose fragility.
-    Each laboratory forces the reader to observe how a seemingly reasonable
-    position becomes untenable once execution, leverage, or regime shifts are introduced.
-  </p>
+  <!-- DISCLAIMERS -->
+  <section>
+    <h2>Licensing, Governance & AI Use Disclosure</h2>
 
-  <p>
-    The pedagogical objective is not success but calibration:
-    understanding where models break, where intuition fails,
-    and why institutional risk management dominates realized outcomes.
-  </p>
-</section>
+    <div class="callout">
+      <p>
+        <strong>Copyright © Alejandro Reynoso.</strong> All original text, structure,
+        pedagogical design, and market models are the intellectual property of the author.
+      </p>
 
-<section class="section">
-  <h2>Independent Assessment</h2>
+      <p>
+        <strong>License:</strong> Unless otherwise specified, this repository is released
+        under the MIT License. You are permitted to use, copy, modify, and distribute the
+        material, provided that copyright and license notices are preserved.
+      </p>
 
-  <div class="reviewbox">
-    <div class="stars">⭐⭐⭐⭐⭐</div>
-    <p>
-      <strong>Evaluator:</strong> OpenAI GPT-5.2<br/>
-      <strong>Nature:</strong> Independent, non-authoritative analytical opinion
-    </p>
+      <p>
+        <strong>Educational use only:</strong> This material does not constitute investment,
+        legal, accounting, or compliance advice. Any application in professional settings
+        requires independent verification and qualified human review.
+      </p>
 
-    <p>
-      This collection distinguishes itself through intellectual honesty.
-      It repeatedly acknowledges the gap between simplified models and real markets
-      and treats that gap as the central educational object rather than an inconvenience.
-      The mechanism-first framing is particularly effective in counteracting
-      signal-centric thinking common in quantitative education.
-    </p>
+      <p>
+        <strong>AI use disclosure:</strong> Generative AI tools may have been used to assist
+        with drafting and formatting. Conceptual design, validation, governance logic,
+        and final editorial judgment are performed by the author. Responsibility for
+        interpretation and use rests entirely with human decision-makers.
+      </p>
+    </div>
+  </section>
 
-    <p>
-      The integration of explicit execution costs, leverage constraints,
-      and regime transitions elevates the notebooks from illustrative examples
-      to genuine laboratories. They train judgment, restraint, and respect
-      for market fragility — qualities rarely emphasized but essential in practice.
-    </p>
-
-    <p>
-      <strong>Limitations:</strong>
-      This assessment is generated by a large language model.
-      It is not a peer-reviewed academic evaluation, regulatory review,
-      or investment due diligence. It may reflect coherence and structure
-      rather than empirical validation. Readers should treat it as informed
-      commentary, not evidence.
-    </p>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Disclaimers, Licensing, and AI Use</h2>
-
-  <p>
-    <strong>Educational purpose only.</strong>
-    This material is provided solely for educational and instructional use.
-    It does not constitute investment advice, trading advice, legal advice,
-    accounting advice, or a recommendation to engage in any financial activity.
-  </p>
-
-  <p>
-    <strong>No performance representation.</strong>
-    Simulations, examples, and notebooks do not represent actual trading results
-    and should not be interpreted as indicative of future performance.
-  </p>
-
-  <p>
-    <strong>AI assistance disclosure.</strong>
-    Generative AI tools may have been used to assist with drafting,
-    editing, or structuring portions of the material.
-    However, conceptual design, governance framing, validation,
-    and final judgment are led and approved by the author.
-    Responsibility for interpretation and use remains entirely human.
-  </p>
-
-  <p>
-    <strong>Copyright.</strong><br/>
-    © 2026 Alejandro Reynoso. All rights reserved except as granted below.
-  </p>
-
-  <p>
-    <strong>License.</strong><br/>
-    This work is released under the MIT License unless otherwise noted.
-    Permission is granted to use, copy, modify, merge, publish, and distribute
-    the material, provided the original copyright notice and license text
-    are included in all copies or substantial portions.
-  </p>
-
-  <div class="callout">
-    <strong>Institutional guidance:</strong>
-    Any use beyond the classroom should include documented assumptions,
-    explicit risk review, and named human accountability.
-  </div>
-</section>
-
-<footer class="footer">
-  Markets for Traders · Market Mechanics & Execution Pillar · MIT License · Not Verified
-</footer>
+  <footer>
+    Markets for Traders · Market Mechanics & Execution Pillar · Governance-First Trading Education
+  </footer>
 
 </main>
 </body>
