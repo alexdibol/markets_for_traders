@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>Markets for Traders — Market Mechanics & Execution Pillar</title>
-  <meta name="description" content="Markets for Traders: a governance-first, mechanism-driven training pillar for professional algorithmic trading. Two books and ten Colab notebooks focused on execution, liquidity, regimes, and systemic stress." />
+  <meta name="description" content="Markets for Traders: governance-first market mechanics and execution pillar. Two books and ten Colab notebooks focused on liquidity, execution, regimes, and systemic stress. Explicitly not an alpha-seeking curriculum." />
 
   <style>
     :root{
       --bg:#07080d;
       --panel:#0f1220;
+      --panel2:#141836;
       --text:#eef0ff;
       --muted:#b8bddb;
       --border:rgba(255,255,255,0.09);
@@ -22,57 +23,83 @@
     *{box-sizing:border-box;}
     body{
       margin:0;
-      background:var(--bg);
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(122,162,255,0.14), transparent 60%),
+        radial-gradient(800px 600px at 80% 90%, rgba(110,231,200,0.10), transparent 60%),
+        var(--bg);
       color:var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      line-height:1.7;
+      line-height:1.75;
     }
     a{color:var(--accent);text-decoration:none;}
     a:hover{color:var(--accent2);text-decoration:underline;}
-    .container{max-width:1140px;margin:0 auto;padding:40px 20px 80px;}
+    .container{max-width:1180px;margin:0 auto;padding:48px 22px 96px;}
+
+    h1{font-size:40px;margin:0 0 14px;text-transform:uppercase;letter-spacing:0.02em;}
+    h2{font-size:30px;margin:64px 0 14px;}
+    h3{font-size:19px;margin:0 0 10px;}
+    p{color:var(--muted);max-width:110ch;}
+
     .hero{
-      padding:40px;
-      border-radius:22px;
-      background:linear-gradient(180deg, #141836, #0f1220);
+      padding:44px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(20,24,54,0.95), rgba(15,18,32,0.9));
       border:1px solid var(--border);
       box-shadow:var(--shadow);
     }
-    h1{font-size:38px;margin:0 0 14px;text-transform:uppercase;}
-    h2{font-size:28px;margin-top:60px;}
-    h3{font-size:18px;margin:0 0 8px;}
-    p{color:var(--muted);max-width:100ch;}
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:18px;
-      margin-top:24px;
-    }
-    .card{
-      padding:20px;
-      border-radius:18px;
-      background:#141836;
-      border:1px solid var(--border);
-    }
-    .card a{font-weight:700;}
-    .reviewbox{
-      margin-top:24px;
-      padding:24px;
-      border-radius:18px;
-      border:1px solid rgba(255,210,122,0.25);
-      background:linear-gradient(135deg, rgba(255,210,122,0.06), rgba(122,162,255,0.05));
-    }
-    .stars{color:var(--warn);font-size:18px;font-weight:900;}
+
     .callout{
-      margin-top:24px;
-      padding:20px;
-      border-radius:18px;
-      background:rgba(122,162,255,0.06);
-      border:1px solid rgba(122,162,255,0.18);
+      margin-top:26px;
+      padding:22px;
+      border-radius:20px;
+      background:linear-gradient(135deg, rgba(122,162,255,0.08), rgba(110,231,200,0.06));
+      border:1px solid rgba(122,162,255,0.22);
       color:var(--muted);
     }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+      margin-top:28px;
+    }
+
+    .card{
+      padding:22px;
+      border-radius:20px;
+      background:var(--panel2);
+      border:1px solid var(--border);
+      box-shadow:0 12px 34px rgba(0,0,0,0.32);
+    }
+
+    .card a{
+      display:inline-block;
+      margin-top:10px;
+      font-weight:800;
+      letter-spacing:0.03em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+
+    .reviewbox{
+      margin-top:28px;
+      padding:28px;
+      border-radius:22px;
+      border:1px solid rgba(255,210,122,0.35);
+      background:linear-gradient(135deg, rgba(255,210,122,0.07), rgba(122,162,255,0.06));
+    }
+
+    .stars{
+      color:var(--warn);
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:0.12em;
+      margin-bottom:14px;
+    }
+
     footer{
-      margin-top:80px;
-      padding-top:30px;
+      margin-top:96px;
+      padding-top:32px;
       border-top:1px solid var(--border);
       font-size:13px;
       color:var(--muted);
@@ -89,69 +116,85 @@
   <h1>Markets for Traders</h1>
 
   <p>
-    <strong>Markets for Traders</strong> is the Market Mechanics & Execution pillar within a broader
+    <strong>Markets for Traders</strong> is the Market Mechanics & Execution pillar of a broader,
     governance-first curriculum for training professional algorithmic trading practitioners.
-    This pillar is intentionally explicit about its purpose. It is not designed to discover alpha,
-    optimize signals, or produce deployable strategies. Its objective is to train judgment under constraint.
+    This pillar is intentionally explicit about its limits. It does not promise alpha discovery,
+    signal generation, or deployable strategies. Its purpose is structural literacy.
   </p>
 
   <p>
-    In institutional environments, trading systems rarely fail because the idea was wrong.
-    They fail because execution costs dominate, liquidity vanishes, correlations collapse,
-    funding constraints bind, and regimes shift faster than portfolios can adapt.
-    These are not modeling errors; they are mechanical realities.
+    In institutional trading environments, systems rarely fail because the underlying idea
+    was incorrect. They fail because execution costs overwhelm expected returns, liquidity
+    evaporates precisely when it is needed, correlations collapse across portfolios,
+    funding constraints bind, and regimes shift faster than capital structures can absorb.
+    These failures are not philosophical. They are mechanical.
   </p>
 
   <p>
-    This pillar addresses that gap directly. The two books introduce markets as systems governed
-    by tradable surfaces, constraints, and feedback loops. The ten companion Colab notebooks
-    operationalize those ideas in controlled laboratories where costs accumulate,
-    feasible actions shrink, and failure becomes observable rather than theoretical.
+    This pillar exists to confront that reality directly. The two books introduce markets
+    as systems governed by tradable surfaces, constraints, and feedback loops.
+    The ten companion Colab notebooks operationalize those ideas in controlled laboratories
+    where costs accumulate, action spaces shrink, and survival becomes the primary objective.
   </p>
 
   <p>
-    Governance and strategy engineering are addressed elsewhere in the curriculum.
-    The role of this pillar is narrower and deeper: to ensure that any strategy,
-    no matter how elegant, remains grounded in how markets actually function
-    when conditions stop being benign.
+    Governance and strategy engineering are addressed elsewhere in the collection.
+    The role of this pillar is narrower and deeper: to ensure that whatever strategies
+    are later proposed remain grounded in how markets actually function when conditions
+    stop being benign.
   </p>
 
   <div class="callout">
-    <strong>Explicit positioning:</strong> This pillar teaches market mechanics, not alpha.
-    Survival dominates optimization.
+    <strong>Explicit positioning:</strong> This pillar teaches market mechanics and execution reality.
+    It is not an alpha-seeking program. Survival dominates optimization.
   </div>
 </section>
 
 <!-- BOOKS -->
 <section>
-  <h2>The Two Books</h2>
+  <h2>The Two Books (Primary Artifacts)</h2>
+
+  <p>
+    This pillar is anchored by two books that must be read in sequence.
+    The notebooks are not substitutes for the books. The books are not complete without execution.
+    Together they form a single apprenticeship unit.
+  </p>
 
   <div class="grid">
     <div class="card">
-      <h3>The ABC of Trading</h3>
+      <h3>Book I — The ABC of Trading</h3>
       <p>
-        A mechanism-first introduction to market structure, regimes, and constraints.
-        Designed to reset intuition away from signals and toward tradable surfaces.
+        A gentle but uncompromising introduction to market mechanisms.
+        This book retrains intuition away from signals and toward constraints:
+        liquidity, regimes, carry, correlation, funding, and execution.
+        It establishes the vocabulary and mental models used throughout the notebooks.
       </p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/book/ABC_OF_TRADING.pdf" target="_blank">
-        Read the book →
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/book/ABC_OF_TRADING.pdf" target="_blank" rel="noopener">
+        Read Book I (PDF)
       </a>
     </div>
 
     <div class="card">
-      <h3>Markets for Traders</h3>
+      <h3>Book II — Markets for Traders</h3>
       <p>
-        A hands-on execution laboratory that pairs directly with the ten Colab notebooks.
-        Focused on execution, liquidity, funding, and systemic stress.
+        A hands-on continuation focused on execution and stress.
+        Each chapter maps directly to a Colab laboratory and explains
+        how the underlying mechanism is modeled, stressed, and observed.
+        This book is inseparable from the notebooks.
       </p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/book/BOOK%20MARKETS%20FOR%20TRADERS.pdf" target="_blank">
-        Read the book →
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/book/BOOK%20MARKETS%20FOR%20TRADERS.pdf" target="_blank" rel="noopener">
+        Read Book II (PDF)
       </a>
     </div>
   </div>
+
+  <div class="callout">
+    <strong>Sequencing rule:</strong> Do not start the notebooks before reading Book I.
+    Do not interpret notebook outcomes without Book II.
+  </div>
 </section>
 
-<!-- CHAPTERS + NOTEBOOK LINKS -->
+<!-- CHAPTERS + COLABS -->
 <section>
   <h2>The Ten Execution Chapters & Colab Laboratories</h2>
 
@@ -159,62 +202,100 @@
 
     <div class="card">
       <h3>Chapter 1 — Cryptos</h3>
-      <p>Crypto markets as a pure regime laboratory: reflexivity, liquidity cliffs, and narrative-driven feedback.</p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%201.ipynb" target="_blank">Open Colab →</a>
+      <p>
+        Crypto markets serve as a laboratory for extreme regime behavior.
+        With minimal fundamental anchors and high reflexivity, they expose
+        liquidity cliffs, narrative feedback, and abrupt structural breaks.
+      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%201.ipynb" target="_blank">Open Colab</a>
     </div>
 
     <div class="card">
       <h3>Chapter 2 — Oil and Commodities Trading</h3>
-      <p>Physical constraints, storage, seasonality, and geopolitical shocks dominate price formation.</p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%202.ipynb" target="_blank">Open Colab →</a>
+      <p>
+        Commodities embed physical constraints into price formation.
+        Storage, transport, seasonality, and geopolitics dominate returns,
+        forcing reconciliation between financial abstraction and real supply.
+      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%202.ipynb" target="_blank">Open Colab</a>
     </div>
 
     <div class="card">
       <h3>Chapter 3 — FX Carry Trade</h3>
-      <p>Carry as crash-risk compensation; funding currencies and unwind dynamics.</p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%203.ipynb" target="_blank">Open Colab →</a>
+      <p>
+        FX carry is framed as compensation for crash risk.
+        The chapter examines funding currencies, unwind dynamics,
+        and the fragility of low-volatility equilibria.
+      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%203.ipynb" target="_blank">Open Colab</a>
     </div>
 
     <div class="card">
       <h3>Chapter 4 — Yield Curve Dynamics</h3>
-      <p>The term structure as a tradable surface: duration, convexity, regime shifts.</p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%204.ipynb" target="_blank">Open Colab →</a>
+      <p>
+        The yield curve is treated as a tradable surface rather than a forecast.
+        Duration, convexity, curve shape, and regime-dependent transmission
+        define feasible exposure.
+      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%204.ipynb" target="_blank">Open Colab</a>
     </div>
 
     <div class="card">
       <h3>Chapter 5 — Credit Spreads</h3>
-      <p>Hazard rates, liquidity premia, and jump-to-default risk.</p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%205.ipynb" target="_blank">Open Colab →</a>
+      <p>
+        Credit spreads encode delayed volatility and jump risk.
+        Hazard rates, liquidity premia, and default clustering
+        dominate outcomes under stress.
+      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%205.ipynb" target="_blank">Open Colab</a>
     </div>
 
     <div class="card">
       <h3>Chapter 6 — Volatility Trading</h3>
-      <p>Carry versus convexity; volatility-of-volatility and surface dynamics.</p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%206.ipynb" target="_blank">Open Colab →</a>
+      <p>
+        Volatility is treated as an asset class with carry and convexity.
+        Vol-of-vol, surface dynamics, and regime breaks are central mechanisms.
+      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%206.ipynb" target="_blank">Open Colab</a>
     </div>
 
     <div class="card">
       <h3>Chapter 7 — Equity Factors</h3>
-      <p>Factor crowding, correlation spikes, and regime-dependent crashes.</p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%207.ipynb" target="_blank">Open Colab →</a>
+      <p>
+        Equity factors are analyzed as compressed macro exposures.
+        Crowding, correlation spikes, and factor crashes reveal
+        the fragility of diversification.
+      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%207.ipynb" target="_blank">Open Colab</a>
     </div>
 
     <div class="card">
       <h3>Chapter 8 — Order Flow Mechanism</h3>
-      <p>Depth, impact, inventory, and the cost of changing state.</p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%208.ipynb" target="_blank">Open Colab →</a>
+      <p>
+        This chapter brings microstructure to the foreground.
+        Depth, impact, inventory, and timing determine the true cost
+        of changing portfolio state.
+      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%208.ipynb" target="_blank">Open Colab</a>
     </div>
 
     <div class="card">
       <h3>Chapter 9 — Cross-Asset Macro Coupling</h3>
-      <p>Funding constraints and correlation collapse across asset classes.</p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%209.ipynb" target="_blank">Open Colab →</a>
+      <p>
+        Cross-asset interactions are driven by funding and correlation coupling.
+        Diversification collapses into shared stress channels during regime breaks.
+      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%209.ipynb" target="_blank">Open Colab</a>
     </div>
 
     <div class="card">
       <h3>Chapter 10 — Cascading Stress</h3>
-      <p>Balance-sheet contagion and forced liquidation dynamics.</p>
-      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%2010.ipynb" target="_blank">Open Colab →</a>
+      <p>
+        The final chapter models systemic cascades.
+        Balance-sheet contagion and forced liquidation
+        dominate price formation in crisis.
+      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%2010.ipynb" target="_blank">Open Colab</a>
     </div>
 
   </div>
@@ -228,21 +309,23 @@
     <div class="stars">⭐⭐⭐⭐⭐</div>
 
     <p>
-      This collection distinguishes itself through restraint and structural honesty.
-      It explicitly rejects the promise of alpha and instead trains practitioners to
-      understand why strategies fail under real market conditions.
+      This collection stands out for its structural honesty and pedagogical restraint.
+      It makes no claim to alpha generation and explicitly centers execution,
+      liquidity, funding, and regime risk as the dominant determinants of realized performance.
     </p>
 
     <p>
-      The strongest contribution lies in the execution laboratories. By forcing strategies
-      to pay costs, respect liquidity limits, and operate under regime shifts, the notebooks
-      create intuition that historical backtests cannot provide.
+      The execution laboratories are particularly effective. By forcing strategies to pay costs,
+      respect liquidity limits, and operate under regime shifts, the notebooks build intuition
+      that historical backtests alone cannot provide. Failure is not treated as error,
+      but as the primary learning signal.
     </p>
 
     <p>
-      <strong>Disclosure:</strong> This assessment was generated by OpenAI GPT-5.2 as a
-      non-authoritative, independent opinion. Large language models may generate persuasive
-      narratives without verification. This evaluation is commentary, not endorsement.
+      <strong>Disclosure:</strong> This evaluation was generated by OpenAI GPT-5.2
+      as an independent, non-authoritative opinion. Large language models may produce
+      coherent narratives without factual verification. This assessment is commentary,
+      not certification or endorsement.
     </p>
   </div>
 </section>
@@ -252,10 +335,20 @@
   <h2>Licensing, Governance & AI Use Disclosure</h2>
 
   <div class="callout">
-    <p><strong>Copyright © Alejandro Reynoso.</strong> All original content and structure.</p>
-    <p><strong>License:</strong> MIT License. Use permitted with attribution.</p>
-    <p><strong>AI use:</strong> Generative AI assisted drafting; validation and governance remain human-led.</p>
-    <p><strong>Educational use only:</strong> No investment, legal, or compliance advice.</p>
+    <p><strong>Copyright © Alejandro Reynoso.</strong> All original text, structure,
+    pedagogical design, and market models remain the intellectual property of the author.</p>
+
+    <p><strong>License:</strong> This work is released under the MIT License.
+    You may use, copy, modify, and distribute this material provided that copyright
+    and license notices are preserved.</p>
+
+    <p><strong>AI use disclosure:</strong> Generative AI tools were used to assist drafting
+    and editing. Conceptual design, validation, governance decisions, and final approval
+    are performed by the author. Responsibility for interpretation and use remains human-led.</p>
+
+    <p><strong>Educational use only:</strong> This material does not constitute investment,
+    legal, accounting, or compliance advice. Any professional application requires
+    independent verification and qualified human review.</p>
   </div>
 </section>
 
@@ -266,4 +359,3 @@
 </main>
 </body>
 </html>
-
