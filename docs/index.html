@@ -1,153 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<section class="hero" id="top">
-  <div class="kicker">Algorithmic Trading · Market Mechanics Pillar · Professional Systems Training</div>
+  <title>Markets for Traders — Market Mechanics & Execution Pillar</title>
+  <meta name="description" content="Markets for Traders is the Market Mechanics & Execution pillar of a professional algorithmic trading curriculum. Two books and ten Colab laboratories focused on liquidity, execution, regimes, and survivable architectures — not alpha discovery." />
 
-  <h1>Markets for Traders<br/>Mechanism-First Trading Architectures</h1>
+  <style>
+    :root{
+      --bg:#07080d;
+      --panel:#0f1220;
+      --panel-2:#141836;
+      --text:#eef0ff;
+      --muted:#b8bddb;
+      --border:rgba(255,255,255,0.09);
+      --accent:#7aa2ff;
+      --accent2:#6ee7c8;
+      --warn:#ffd27a;
+      --shadow:0 18px 60px rgba(0,0,0,0.45);
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(122,162,255,0.18), transparent 55%),
+        radial-gradient(800px 600px at 85% 20%, rgba(110,231,200,0.12), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      line-height:1.6;
+    }
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{color:var(--accent2);text-decoration:underline;}
+    .container{max-width:1140px;margin:0 auto;padding:36px 22px 90px;}
 
-  <p class="subtitle">
-    This sub-collection is one of the <strong>three pillars</strong> of a broader professional training program for
-    algorithmic trading. It is <strong>explicitly not about finding alpha</strong>.
-    Its purpose is to train practitioners to design, reason about, and implement
-    <strong>operationally sound trading architectures</strong> that remain coherent under
-    execution costs, liquidity constraints, regime shifts, and funding stress.
-  </p>
+    .hero{
+      padding:38px 34px;
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(20,24,54,0.92), rgba(15,18,32,0.88));
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+    .kicker{
+      font-size:12px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size:38px;
+      line-height:1.15;
+      text-transform:uppercase;
+    }
+    .subtitle{
+      color:var(--muted);
+      max-width:110ch;
+      font-size:16px;
+    }
 
-  <div class="pillrow">
-    <span class="pill"><span class="dot"></span> No Alpha Claims</span>
-    <span class="pill"><span class="dot g"></span> Execution & Liquidity First</span>
-    <span class="pill"><span class="dot y"></span> Gap-Aware by Design</span>
-    <span class="pill"><span class="dot"></span> Institutional Reality</span>
-  </div>
+    .pillrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+    .pill{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:0.03em;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(0,0,0,0.22);
+      border:1px solid var(--border);
+      color:var(--muted);
+    }
 
-  <div class="callout">
-    <strong>Explicit premise:</strong> Markets are not price series.
-    They are constraint-driven systems where liquidity, funding, execution,
-    and regime dependence dominate realized outcomes.
-  </div>
-</section>
+    section{margin-top:60px;}
+    h2{font-size:28px;margin:0 0 14px;}
+    p{color:var(--muted);max-width:110ch;margin:10px 0;}
 
-<!-- SEQUENCE -->
-<section class="section" id="sequence">
-  <h2>The Two-Book Sequence</h2>
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+      margin-top:22px;
+    }
+    .card{
+      padding:20px;
+      border-radius:18px;
+      background:rgba(20,24,54,0.75);
+      border:1px solid var(--border);
+      box-shadow:0 10px 30px rgba(0,0,0,0.30);
+      transition:transform .12s ease,border-color .12s ease;
+    }
+    .card:hover{transform:translateY(-2px);border-color:rgba(122,162,255,.45);}
+    .card h3{margin:0 0 10px;font-size:18px;}
+    .card p{margin:0;font-size:14px;}
+    .hint{margin-top:12px;font-size:12px;font-weight:700;color:var(--muted);}
 
-  <p>
-    The pillar is designed to be read and used <strong>in order</strong>.
-    The first book rebuilds intuition. The second forces execution.
-    Neither book claims to close the gap between models and markets —
-    that gap is named, revisited, and treated as a first-class object.
-  </p>
+    .callout{
+      margin-top:22px;
+      padding:18px;
+      border-radius:18px;
+      border:1px solid rgba(122,162,255,0.22);
+      background:linear-gradient(135deg, rgba(122,162,255,0.06), rgba(110,231,200,0.04));
+      color:var(--muted);
+      max-width:110ch;
+    }
+    .callout strong{color:var(--text);}
 
-  <div class="grid">
+    .review{
+      padding:20px;
+      border-radius:18px;
+      border:1px solid rgba(110,231,200,0.25);
+      background:linear-gradient(135deg, rgba(110,231,200,0.06), rgba(122,162,255,0.05));
+      max-width:110ch;
+    }
+    .stars{color:var(--warn);font-weight:900;letter-spacing:.1em;}
 
-    <a class="card linkcard"
-       href="https://github.com/alexdibol/markets_for_traders/blob/main/book/ABC_OF_TRADING.pdf"
-       target="_blank" rel="noopener">
-      <h3>Book I — The ABC of Trading</h3>
-      <p>
-        A mechanism-first introduction to markets.
-        Liquidity, carry, correlation, funding, and regime transitions are treated
-        as <strong>tradable constraints</strong>, not background noise.
-        No strategies. No optimization. Pure architectural literacy.
+    footer{
+      margin-top:80px;
+      padding-top:24px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
+    @media(max-width:720px){
+      h1{font-size:30px;}
+      .hero{padding:28px 22px;}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="kicker">Algorithmic Trading · Market Mechanics & Execution Pillar</div>
+
+      <h1>Markets for Traders</h1>
+
+      <p class="subtitle">
+        This page documents the <strong>Market Mechanics & Execution</strong> pillar of a
+        professional algorithmic trading curriculum.
+        It is <strong>explicitly not about finding alpha</strong>.
+        Its purpose is to train practitioners to design, evaluate, and reason about
+        <strong>operationally sound trading architectures</strong> under execution costs,
+        liquidity constraints, regime shifts, and funding stress.
       </p>
-      <div class="hint">Read the book →</div>
-    </a>
 
-    <a class="card linkcard"
-       href="https://github.com/alexdibol/markets_for_traders/blob/main/book/BOOK%20MARKETS%20FOR%20TRADERS.pdf"
-       target="_blank" rel="noopener">
-      <h3>Book II — Markets for Traders</h3>
+      <div class="pillrow">
+        <span class="pill">No Alpha Claims</span>
+        <span class="pill">Execution & Liquidity First</span>
+        <span class="pill">Explicit Gap Awareness</span>
+        <span class="pill">Institutional Reality</span>
+      </div>
+
+      <div class="callout">
+        <strong>Core premise:</strong> markets are constraint-driven systems.
+        Liquidity, funding, execution, and regime dependence dominate realized outcomes —
+        not signals in isolation.
+      </div>
+    </section>
+
+    <!-- BOOKS -->
+    <section>
+      <h2>The Two-Book Sequence</h2>
       <p>
-        A hands-on execution laboratory.
-        Ten fully specified Colab notebooks simulate market mechanisms
-        and force the reader to confront execution costs, binding constraints,
-        regime stress, and failure modes.
+        The pillar is designed to be read in order.
+        The first book recalibrates intuition.
+        The second forces execution and failure under controlled stress.
+        Both repeatedly acknowledge the gap between models and real markets.
       </p>
-      <div class="hint">Read the book →</div>
-    </a>
 
-  </div>
+      <div class="grid">
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/book/ABC_OF_TRADING.pdf" target="_blank">
+          <h3>Book I — The ABC of Trading</h3>
+          <p>
+            A mechanism-first introduction to market structure.
+            Liquidity, carry, correlation, funding, and regimes are treated as
+            tradable constraints rather than background statistics.
+          </p>
+          <div class="hint">Read PDF →</div>
+        </a>
 
-  <div class="callout">
-    <strong>Design rule:</strong> Book I calibrates intuition.
-    Book II recalibrates confidence.
-    Neither promises deployable performance.
-  </div>
-</section>
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/book/BOOK%20MARKETS%20FOR%20TRADERS.pdf" target="_blank">
+          <h3>Book II — Markets for Traders</h3>
+          <p>
+            A hands-on execution laboratory built around ten Colab notebooks.
+            Strategies fail for realistic reasons: costs accumulate,
+            liquidity vanishes, and constraints bind.
+          </p>
+          <div class="hint">Read PDF →</div>
+        </a>
+      </div>
+    </section>
 
-<!-- NOTEBOOKS -->
-<section class="section" id="labs">
-  <h2>The 10 Execution Laboratories (Colab)</h2>
+    <!-- NOTEBOOKS -->
+    <section>
+      <h2>The 10 Execution Laboratories (Colab)</h2>
+      <p>
+        These notebooks are not demonstrations.
+        They are controlled environments where failure is instructional
+        and success is explicitly non-deployable.
+      </p>
 
-  <p>
-    The notebooks are not demonstrations.
-    They are <strong>controlled stress environments</strong> where strategies fail
-    for the same reasons they fail in institutions:
-    costs accumulate, liquidity disappears, correlations compress,
-    and survival constraints bind.
-  </p>
+      <div class="grid">
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%201.ipynb" target="_blank">Notebook 1 — Market State & Regimes</a>
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%202.ipynb" target="_blank">Notebook 2 — Carry as Risk Transfer</a>
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%203.ipynb" target="_blank">Notebook 3 — Liquidity & Impact</a>
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%204.ipynb" target="_blank">Notebook 4 — Volatility & Convexity</a>
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%205.ipynb" target="_blank">Notebook 5 — Credit & Spread Geometry</a>
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%206.ipynb" target="_blank">Notebook 6 — Execution & Costs</a>
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%207.ipynb" target="_blank">Notebook 7 — Correlation Surfaces</a>
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%208.ipynb" target="_blank">Notebook 8 — Liquidity Grids</a>
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%209.ipynb" target="_blank">Notebook 9 — Systemic Stress</a>
+        <a class="card" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%2010.ipynb" target="_blank">Notebook 10 — Balance-Sheet Cascades</a>
+      </div>
 
-  <div class="grid">
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%201.ipynb" target="_blank">Notebook 1 — Market State & Regimes</a>
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%202.ipynb" target="_blank">Notebook 2 — Carry as Risk Transfer</a>
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%203.ipynb" target="_blank">Notebook 3 — Liquidity & Impact</a>
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%204.ipynb" target="_blank">Notebook 4 — Volatility & Convexity</a>
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%205.ipynb" target="_blank">Notebook 5 — Credit & Spread Geometry</a>
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%206.ipynb" target="_blank">Notebook 6 — Execution & Costs</a>
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%207.ipynb" target="_blank">Notebook 7 — Correlation Surfaces</a>
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%208.ipynb" target="_blank">Notebook 8 — Liquidity Grids</a>
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%209.ipynb" target="_blank">Notebook 9 — Systemic Stress</a>
-    <a class="card linkcard" href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%2010.ipynb" target="_blank">Notebook 10 — Balance-Sheet Cascades</a>
-  </div>
+      <div class="callout">
+        <strong>Important:</strong> success in these notebooks is not evidence of deployability.
+        Failure is often the correct educational outcome.
+      </div>
+    </section>
 
-  <div class="callout">
-    <strong>Important:</strong> Success in these notebooks is not evidence of deployability.
-    Failure is often the correct educational outcome.
-  </div>
-</section>
+    <!-- REVIEW -->
+    <section>
+      <h2>Independent Evaluation</h2>
 
-<!-- REVIEW -->
-<section class="section" id="evaluation">
-  <h2>Independent Evaluation</h2>
+      <div class="review">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
 
-  <div class="reviewbox">
-    <strong>Market Mechanics & Execution Pillar</strong><br/>
-    <span class="stars">⭐⭐⭐⭐⭐</span>
+        <p>
+          This two-book sequence is unusually honest.
+          It does not promise alpha or prediction.
+          It trains practitioners to reason correctly about execution,
+          liquidity, carry, correlation, funding, and regime stress.
+        </p>
 
-    <p style="margin-top:10px;">
-      This two-book sequence excels by being explicit about what it does not do.
-      It does not promise alpha. It does not confuse simulation with markets.
-      Instead, it trains practitioners to build trading architectures that remain
-      intelligible, reviewable, and survivable under real constraints.
-    </p>
+        <p>
+          The repeated acknowledgment of the gap between models and real markets
+          is a core pedagogical strength. The books do not attempt to close that gap;
+          they teach how to recognize it and design systems that remain coherent despite it.
+        </p>
 
-    <p>
-      The repeated acknowledgment of the gap between models and reality is not a disclaimer
-      but a pedagogical strength. Readers leave with better judgment, not false confidence.
-      As a market mechanics pillar inside a broader professional curriculum,
-      this collection is unusually honest and structurally sound.
-    </p>
+        <p style="font-size:12px;opacity:.9;">
+          Status: opinion · not verified · educational context only
+        </p>
+      </div>
+    </section>
 
-    <div class="reviewmeta">
-      Rating context: <code>professional trading education</code><br/>
-      Status: <code>Opinion · Not verified</code>
-    </div>
-  </div>
-</section>
+    <!-- DISCLAIMER -->
+    <section>
+      <h2>Scope & Disclaimer</h2>
 
-<!-- DISCLAIMER -->
-<section class="section" id="disclaimer">
-  <h2>Scope & Disclaimer</h2>
+      <p>
+        This material is educational. It does not provide investment advice,
+        trading signals, or deployable strategies.
+        All outputs must be reviewed and approved by accountable humans
+        before any real-world use.
+      </p>
 
-  <p class="small">
-    This material is educational. It does not provide investment advice,
-    trading signals, or deployable strategies.
-    All outputs must be reviewed, validated, and approved by accountable humans
-    before any real-world use.
-  </p>
+      <div class="callout">
+        <strong>Bottom line:</strong> these books teach how markets work.
+        What you do with that understanding belongs to other pillars.
+      </div>
+    </section>
 
-  <div class="callout">
-    <strong>Core message:</strong> These books teach how markets work.
-    What you do with that understanding belongs to the other pillars.
-  </div>
-</section>
+    <footer>
+      Markets for Traders · Market Mechanics & Execution Pillar<br/>
+      Built for professional trading education · Not verified · No alpha claims
+    </footer>
+
+  </main>
+</body>
+</html>
+
 
