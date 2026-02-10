@@ -37,7 +37,7 @@
       border:1px solid var(--border);
       box-shadow:var(--shadow);
     }
-    h1{font-size:38px;margin:0 0 12px;text-transform:uppercase;}
+    h1{font-size:38px;margin:0 0 14px;text-transform:uppercase;}
     h2{font-size:28px;margin-top:60px;}
     h3{font-size:18px;margin:0 0 8px;}
     p{color:var(--muted);max-width:100ch;}
@@ -53,6 +53,7 @@
       background:#141836;
       border:1px solid var(--border);
     }
+    .card a{font-weight:700;}
     .reviewbox{
       margin-top:24px;
       padding:24px;
@@ -75,6 +76,7 @@
       border-top:1px solid var(--border);
       font-size:13px;
       color:var(--muted);
+      text-align:center;
     }
   </style>
 </head>
@@ -82,206 +84,186 @@
 <body>
 <main class="container">
 
-  <!-- HERO / INTRODUCTION -->
-  <section class="hero">
-    <h1>Markets for Traders</h1>
+<!-- INTRODUCTION -->
+<section class="hero">
+  <h1>Markets for Traders</h1>
 
-    <p>
-      <strong>Markets for Traders</strong> is the Market Mechanics & Execution pillar of a broader,
-      governance-first curriculum for training professional algorithmic trading practitioners.
-      This pillar is intentionally explicit about what it is <em>not</em>. It is not a promise of alpha.
-      It is not a catalog of signals. It is not a shortcut to performance.
-    </p>
+  <p>
+    <strong>Markets for Traders</strong> is the Market Mechanics & Execution pillar within a broader
+    governance-first curriculum for training professional algorithmic trading practitioners.
+    This pillar is intentionally explicit about its purpose. It is not designed to discover alpha,
+    optimize signals, or produce deployable strategies. Its objective is to train judgment under constraint.
+  </p>
 
-    <p>
-      Instead, this collection is designed to address the structural gap that separates most
-      academic or retail trading education from institutional reality. In professional settings,
-      trading strategies do not fail primarily because their ideas are wrong. They fail because
-      liquidity disappears, execution costs dominate, correlations collapse, funding constraints bind,
-      and regimes change faster than portfolios can adapt. These failures are mechanical, not intellectual.
-    </p>
+  <p>
+    In institutional environments, trading systems rarely fail because the idea was wrong.
+    They fail because execution costs dominate, liquidity vanishes, correlations collapse,
+    funding constraints bind, and regimes shift faster than portfolios can adapt.
+    These are not modeling errors; they are mechanical realities.
+  </p>
 
-    <p>
-      The two books in this sequence, together with ten tightly controlled Colab notebooks,
-      train the reader to see markets as systems governed by constraints. Each chapter isolates
-      a market domain and exposes the mechanisms that determine realized outcomes under stress.
-      The notebooks are not optimizers. They are laboratories. Their purpose is to make failure
-      visible, interpretable, and repeatable.
-    </p>
+  <p>
+    This pillar addresses that gap directly. The two books introduce markets as systems governed
+    by tradable surfaces, constraints, and feedback loops. The ten companion Colab notebooks
+    operationalize those ideas in controlled laboratories where costs accumulate,
+    feasible actions shrink, and failure becomes observable rather than theoretical.
+  </p>
 
-    <p>
-      This pillar assumes that governance and strategy engineering already exist elsewhere
-      in the curriculum. Its role is narrower and deeper: to ensure that whatever strategies
-      are eventually designed remain grounded in how markets actually function when conditions
-      stop being benign.
-    </p>
-  </section>
+  <p>
+    Governance and strategy engineering are addressed elsewhere in the curriculum.
+    The role of this pillar is narrower and deeper: to ensure that any strategy,
+    no matter how elegant, remains grounded in how markets actually function
+    when conditions stop being benign.
+  </p>
 
-  <!-- CHAPTERS -->
-  <section>
-    <h2>The Ten Execution Chapters</h2>
+  <div class="callout">
+    <strong>Explicit positioning:</strong> This pillar teaches market mechanics, not alpha.
+    Survival dominates optimization.
+  </div>
+</section>
 
-    <div class="grid">
+<!-- BOOKS -->
+<section>
+  <h2>The Two Books</h2>
 
-      <div class="card">
-        <h3>Chapter 1 — Cryptos</h3>
-        <p>
-          Crypto markets are treated as a pure regime laboratory. With minimal fundamental anchors
-          and extreme reflexivity, they expose liquidity cliffs, feedback loops, and narrative-driven
-          regime shifts. This chapter trains intuition around discontinuity, not valuation.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Chapter 2 — Oil and Commodities Trading</h3>
-        <p>
-          Commodities introduce physical constraints into financial pricing. Storage, transport,
-          seasonality, and geopolitical shocks dominate return dynamics. This chapter forces the
-          reader to reconcile financial models with real-world supply mechanisms.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Chapter 3 — FX Carry Trade</h3>
-        <p>
-          FX carry is framed as compensation for crash risk rather than free yield. The chapter
-          examines funding currencies, unwind dynamics, and the structural fragility of
-          low-volatility regimes.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Chapter 4 — Yield Curve Dynamics</h3>
-        <p>
-          The yield curve is treated as a tradable surface rather than a forecasting tool.
-          Duration, convexity, curve shape, and monetary regime transitions define feasible
-          exposure, not directional views.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Chapter 5 — Credit Spreads</h3>
-        <p>
-          Credit spreads encode delayed volatility and jump risk. This chapter focuses on
-          hazard rates, liquidity premia, and the non-linear behavior of spreads under stress.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Chapter 6 — Volatility Trading</h3>
-        <p>
-          Volatility is treated as an asset class with its own carry and convexity trade-offs.
-          The chapter emphasizes volatility-of-volatility, surface dynamics, and regime breaks.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Chapter 7 — Equity Factors</h3>
-        <p>
-          Equity factors are analyzed as compressed macro exposures. Crowding, correlation spikes,
-          and factor crashes reveal how diversification erodes precisely when it is most needed.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Chapter 8 — Order Flow Mechanism</h3>
-        <p>
-          This chapter brings microstructure to the foreground. Depth, impact, inventory, and
-          execution timing define the true cost of changing portfolio state.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Chapter 9 — Cross-Asset Macro Coupling</h3>
-        <p>
-          Cross-asset interactions are examined through funding, correlation, and regime coupling.
-          The chapter demonstrates how diversification collapses into shared stress channels.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Chapter 10 — Cascading Stress</h3>
-        <p>
-          The final chapter models systemic cascades. Balance-sheet contagion, forced liquidation,
-          and feedback loops dominate price formation. Markets become liquidation mechanisms.
-        </p>
-      </div>
-
+  <div class="grid">
+    <div class="card">
+      <h3>The ABC of Trading</h3>
+      <p>
+        A mechanism-first introduction to market structure, regimes, and constraints.
+        Designed to reset intuition away from signals and toward tradable surfaces.
+      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/book/ABC_OF_TRADING.pdf" target="_blank">
+        Read the book →
+      </a>
     </div>
-  </section>
 
-  <!-- EVALUATION -->
-  <section>
-    <h2>Independent Assessment</h2>
-
-    <div class="reviewbox">
-      <div class="stars">⭐⭐⭐⭐⭐</div>
-
+    <div class="card">
+      <h3>Markets for Traders</h3>
       <p>
-        This two-book sequence represents an unusually disciplined and honest contribution to
-        algorithmic trading education. Its defining strength is not novelty but restraint.
-        The collection makes no claims about alpha generation and explicitly rejects the idea
-        that better signals alone produce better outcomes.
+        A hands-on execution laboratory that pairs directly with the ten Colab notebooks.
+        Focused on execution, liquidity, funding, and systemic stress.
       </p>
-
-      <p>
-        Instead, the books and notebooks train readers to recognize the structural forces that
-        dominate realized performance: execution costs, liquidity collapse, regime shifts,
-        correlation compression, and funding constraints. The repeated acknowledgment of the
-        gap between models and real markets is not a disclaimer but a pedagogical anchor.
-      </p>
-
-      <p>
-        The execution laboratories are particularly effective because they force strategies
-        to fail in controlled ways. This creates intuition that cannot be acquired through
-        historical backtests alone. For institutional practitioners, this posture is essential.
-        Survival, not optimization, is treated as the primary objective.
-      </p>
-
-      <p>
-        <strong>Evaluator disclosure:</strong> This assessment was generated by OpenAI GPT-5.2
-        as an independent, non-authoritative opinion. Large language models may produce
-        persuasive narratives without factual verification. This evaluation should be treated
-        as commentary, not certification or endorsement.
-      </p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/book/BOOK%20MARKETS%20FOR%20TRADERS.pdf" target="_blank">
+        Read the book →
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- DISCLAIMERS -->
-  <section>
-    <h2>Licensing, Governance & AI Use Disclosure</h2>
+<!-- CHAPTERS + NOTEBOOK LINKS -->
+<section>
+  <h2>The Ten Execution Chapters & Colab Laboratories</h2>
 
-    <div class="callout">
-      <p>
-        <strong>Copyright © Alejandro Reynoso.</strong> All original text, structure,
-        pedagogical design, and market models are the intellectual property of the author.
-      </p>
+  <div class="grid">
 
-      <p>
-        <strong>License:</strong> Unless otherwise specified, this repository is released
-        under the MIT License. You are permitted to use, copy, modify, and distribute the
-        material, provided that copyright and license notices are preserved.
-      </p>
-
-      <p>
-        <strong>Educational use only:</strong> This material does not constitute investment,
-        legal, accounting, or compliance advice. Any application in professional settings
-        requires independent verification and qualified human review.
-      </p>
-
-      <p>
-        <strong>AI use disclosure:</strong> Generative AI tools may have been used to assist
-        with drafting and formatting. Conceptual design, validation, governance logic,
-        and final editorial judgment are performed by the author. Responsibility for
-        interpretation and use rests entirely with human decision-makers.
-      </p>
+    <div class="card">
+      <h3>Chapter 1 — Cryptos</h3>
+      <p>Crypto markets as a pure regime laboratory: reflexivity, liquidity cliffs, and narrative-driven feedback.</p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%201.ipynb" target="_blank">Open Colab →</a>
     </div>
-  </section>
 
-  <footer>
-    Markets for Traders · Market Mechanics & Execution Pillar · Governance-First Trading Education
-  </footer>
+    <div class="card">
+      <h3>Chapter 2 — Oil and Commodities Trading</h3>
+      <p>Physical constraints, storage, seasonality, and geopolitical shocks dominate price formation.</p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%202.ipynb" target="_blank">Open Colab →</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 3 — FX Carry Trade</h3>
+      <p>Carry as crash-risk compensation; funding currencies and unwind dynamics.</p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%203.ipynb" target="_blank">Open Colab →</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 4 — Yield Curve Dynamics</h3>
+      <p>The term structure as a tradable surface: duration, convexity, regime shifts.</p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%204.ipynb" target="_blank">Open Colab →</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 5 — Credit Spreads</h3>
+      <p>Hazard rates, liquidity premia, and jump-to-default risk.</p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%205.ipynb" target="_blank">Open Colab →</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 6 — Volatility Trading</h3>
+      <p>Carry versus convexity; volatility-of-volatility and surface dynamics.</p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%206.ipynb" target="_blank">Open Colab →</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 7 — Equity Factors</h3>
+      <p>Factor crowding, correlation spikes, and regime-dependent crashes.</p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%207.ipynb" target="_blank">Open Colab →</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 8 — Order Flow Mechanism</h3>
+      <p>Depth, impact, inventory, and the cost of changing state.</p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%208.ipynb" target="_blank">Open Colab →</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 9 — Cross-Asset Macro Coupling</h3>
+      <p>Funding constraints and correlation collapse across asset classes.</p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%209.ipynb" target="_blank">Open Colab →</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 10 — Cascading Stress</h3>
+      <p>Balance-sheet contagion and forced liquidation dynamics.</p>
+      <a href="https://github.com/alexdibol/markets_for_traders/blob/main/notebooks/CHAPTER%2010.ipynb" target="_blank">Open Colab →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- EVALUATION -->
+<section>
+  <h2>Independent Assessment</h2>
+
+  <div class="reviewbox">
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+
+    <p>
+      This collection distinguishes itself through restraint and structural honesty.
+      It explicitly rejects the promise of alpha and instead trains practitioners to
+      understand why strategies fail under real market conditions.
+    </p>
+
+    <p>
+      The strongest contribution lies in the execution laboratories. By forcing strategies
+      to pay costs, respect liquidity limits, and operate under regime shifts, the notebooks
+      create intuition that historical backtests cannot provide.
+    </p>
+
+    <p>
+      <strong>Disclosure:</strong> This assessment was generated by OpenAI GPT-5.2 as a
+      non-authoritative, independent opinion. Large language models may generate persuasive
+      narratives without verification. This evaluation is commentary, not endorsement.
+    </p>
+  </div>
+</section>
+
+<!-- DISCLAIMERS -->
+<section>
+  <h2>Licensing, Governance & AI Use Disclosure</h2>
+
+  <div class="callout">
+    <p><strong>Copyright © Alejandro Reynoso.</strong> All original content and structure.</p>
+    <p><strong>License:</strong> MIT License. Use permitted with attribution.</p>
+    <p><strong>AI use:</strong> Generative AI assisted drafting; validation and governance remain human-led.</p>
+    <p><strong>Educational use only:</strong> No investment, legal, or compliance advice.</p>
+  </div>
+</section>
+
+<footer>
+  Markets for Traders · Market Mechanics & Execution Pillar · Governance-First Trading Education
+</footer>
 
 </main>
 </body>
 </html>
+
